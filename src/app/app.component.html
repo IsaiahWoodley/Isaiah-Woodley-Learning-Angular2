@@ -1,0 +1,17 @@
+
+<div *ngIf="users && users.length > 0">
+  <h1>User List</h1>
+  <div *ngFor="let user of users">
+    <div>
+      <h2>{{ user.firstName }} {{ user.lastName }}</h2>
+      <p>Id: {{ user.id }}</p>
+      <p>Username: {{ user.userName }}</p>
+      <p>Fan Status: {{ user.isFan ? 'Yes' : 'No' }}</p>
+    </div>
+    <hr>
+  </div>
+</div>
+
+<div *ngIf="!users || users.length === 0">
+  <h1>No users found.</h1>
+</div>
