@@ -8,5 +8,6 @@ import {Component, Input} from '@angular/core';
   styleUrl: './ravens-list-item.component.css'
 })
 export class RavensListItemComponent {
-  @Input() Quarterback: any;
+  @Input() item: any;
+
 }
