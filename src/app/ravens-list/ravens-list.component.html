@@ -1,10 +1,11 @@
 <p>The AFC North Division</p>
 <div *ngIf="DivisionTeams && DivisionTeams.length > 0">
-  <h1>User List</h1>
+  <h1>Teams List</h1>
   <div *ngFor="let DivisionTeams of DivisionTeams">
     <div>
       <h2>{{ DivisionTeams.City }} {{ DivisionTeams.Team }}</h2>
       <p>Head Coach: {{ DivisionTeams.HeadCoach }}</p>
+      <app-ravens-list-item [Quarterback]="Quarterback"></app-ravens-list-item>
     </div>
     <hr>
   </div>
