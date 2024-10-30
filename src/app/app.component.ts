@@ -2,13 +2,14 @@ import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { User } from './model/user';
 import {CommonModule, NgForOf, NgIf} from '@angular/common';
+import {RavensListComponent} from './ravens-list/ravens-list.component';
 
 
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, NgIf, NgForOf],
+  imports: [RouterOutlet, NgIf, NgForOf, RavensListComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

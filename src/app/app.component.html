@@ -1,7 +1,8 @@
 
 <div *ngIf="users && users.length > 0">
+  <app-ravens-list></app-ravens-list>
   <h1>User List</h1>
-  <a href="./ravens-list.component.html">Division Teams</a>
+
   <div *ngFor="let user of users">
     <div>
       <h2>{{ user.firstName }} {{ user.lastName }}</h2>
