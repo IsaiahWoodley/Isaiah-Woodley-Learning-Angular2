@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {NgForOf, NgIf} from '@angular/common';
 import {RavensListItemComponent} from '../ravens-list-item/ravens-list-item.component';
+import {Team, TEAMS} from '../model/data/mock-content';
 
 @Component({
   selector: 'app-ravens-list',
@@ -14,11 +15,5 @@ import {RavensListItemComponent} from '../ravens-list-item/ravens-list-item.comp
   styleUrl: './ravens-list.component.css'
 })
 export class RavensListComponent {
-    DivisionTeams = [
-      {City: 'Pittsburgh', Team: 'Steelers', HeadCoach: 'Mike Tomlin'},
-      {City: 'Cincinnati', Team: 'Bengals', HeadCoach: 'Zac Taylor'},
-      {City: 'Baltimore', Team: 'Ravens', HeadCoach: 'John Harbaugh'},
-      {City: 'Cleveland', Team: 'Browns', HeadCoach: 'Kevin Stefanski'}
-    ];
-  Quarterback: any;
+    DivisionTeams: Team[] = TEAMS;
 }

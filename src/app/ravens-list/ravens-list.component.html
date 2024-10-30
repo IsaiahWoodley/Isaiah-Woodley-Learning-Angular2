@@ -1,11 +1,8 @@
-<h1>The AFC North Division</h1>
 <div *ngIf="DivisionTeams && DivisionTeams.length > 0">
-  <div *ngFor="let DivisionTeams of DivisionTeams">
-    <div>
-      <h2>{{ DivisionTeams.City }} {{ DivisionTeams.Team }}</h2>
-      <p>Head Coach: {{ DivisionTeams.HeadCoach }}</p>
-      <app-ravens-list-item></app-ravens-list-item>
-    </div>
-    <hr>
-  </div>
+  <h1>AFC North Teams</h1>
+  <ng-container *ngFor="let team of DivisionTeams">
+    <app-ravens-list-item [item]="team"></app-ravens-list-item>
+  </ng-container>
 </div>
+
+
