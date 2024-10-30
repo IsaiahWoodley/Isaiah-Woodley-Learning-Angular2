@@ -4,6 +4,7 @@ import { User } from './model/user';
 import {CommonModule, NgForOf, NgIf} from '@angular/common';
 
 
+
 @Component({
   selector: 'app-root',
   standalone: true,

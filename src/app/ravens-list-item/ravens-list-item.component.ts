@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, Input} from '@angular/core';
 
 @Component({
   selector: 'app-ravens-list-item',
@@ -8,5 +8,5 @@ import { Component } from '@angular/core';
   styleUrl: './ravens-list-item.component.css'
 })
 export class RavensListItemComponent {
-
+  @Input() Quarterback: any;
 }
