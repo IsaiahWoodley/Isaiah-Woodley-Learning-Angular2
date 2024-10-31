@@ -2,6 +2,7 @@ import {Component, Input} from '@angular/core';
 import {NgForOf, NgIf} from '@angular/common';
 import {RavensListItemComponent} from '../ravens-list-item/ravens-list-item.component';
 import {Team, TEAMS} from '../model/data/mock-content';
+import {PlayersService} from '../services/players.service';
 
 @Component({
   selector: 'app-ravens-list',
@@ -15,5 +16,8 @@ import {Team, TEAMS} from '../model/data/mock-content';
   styleUrl: './ravens-list.component.css'
 })
 export class RavensListComponent {
-    DivisionTeams: Team[] = TEAMS;
+    DivisionTeams: Team[] = [];
+
+  constructor(private teamService: PlayersService) {}
+
 }
