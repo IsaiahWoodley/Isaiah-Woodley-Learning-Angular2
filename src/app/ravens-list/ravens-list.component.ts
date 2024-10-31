@@ -16,11 +16,15 @@ import {PlayersService} from '../services/players.service';
   styleUrl: './ravens-list.component.css'
 })
 export class RavensListComponent {
-    DivisionTeams: Team[] = [];
+  DivisionTeams: Team[] = [];
 
-  constructor(private playersService: PlayersService) {}
+  constructor(private playersService: PlayersService) {
+  }
 
   ngOnInit(): void {
+    this.team();
+  }
+  team(): void {
     this.playersService.getTeams().subscribe((teams: Team[]) => {
       this.DivisionTeams = teams;
     });
@@ -30,7 +34,8 @@ export class RavensListComponent {
 
     });
   }
-  addTeam(): void{
+
+  addTeam(): void {
     const newTeam: Team = {
       Id: 5,
       City: 'Miami',
@@ -39,6 +44,29 @@ export class RavensListComponent {
     };
     this.playersService.addTeam(newTeam).subscribe((updatedTeams: Team[]) => {
       this.DivisionTeams = updatedTeams;
+    });
+  }
+
+  updateTeam(): void {
+    const updatedTeam: Team = {
+      Id: 1, // ID of the team to update
+      City: 'Updated City',
+      Team: 'Updated Team',
+      HeadCoach: 'Updated Coach'
+    };
+
+    this.playersService.updateTeam(updatedTeam).subscribe(result => {
+      if (result) {
+        console.log('Team updated:', result);
+        this.team();
+      }
+    });
+  }
+
+  deleteTeam(id: number): void {
+    this.playersService.deleteTeam(id).subscribe(updatedTeams => {
+      this.DivisionTeams = updatedTeams;
+      console.log(`Team with ID ${id} deleted`);
     });
   }
 }

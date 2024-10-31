@@ -19,4 +19,16 @@ export class PlayersService {
     TEAMS.push(newTeam);
     return of(TEAMS);
   }
+  updateTeam(updatedTeam: Team): Observable<Team[]> {
+    const index = TEAMS.findIndex(item => item.Id === updatedTeam.Id);
+    if (index !== -1) {
+      TEAMS[index] = updatedTeam;
+    }// Update the existing team
+      return of(TEAMS);
+    }
+
+  deleteTeam(id: number): Observable<Team[]> {
+    const updateTeam = TEAMS.filter(item => item.Id !== id);
+    return of(updateTeam);
+  }
 }
