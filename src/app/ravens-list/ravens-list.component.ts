@@ -18,6 +18,27 @@ import {PlayersService} from '../services/players.service';
 export class RavensListComponent {
     DivisionTeams: Team[] = [];
 
-  constructor(private teamService: PlayersService) {}
+  constructor(private playersService: PlayersService) {}
 
+  ngOnInit(): void {
+    this.playersService.getTeams().subscribe((teams: Team[]) => {
+      this.DivisionTeams = teams;
+    });
+  }
+  fetchTeamById(id: number): void {
+    this.playersService.getTeamById(id).subscribe((team: Team | undefined) => {
+
+    });
+  }
+  addTeam(): void{
+    const newTeam: Team = {
+      Id: 5,
+      City: 'Miami',
+      Team: 'Dolphins',
+      HeadCoach: 'Mike McDaniel'
+    };
+    this.playersService.addTeam(newTeam).subscribe((updatedTeams: Team[]) => {
+      this.DivisionTeams = updatedTeams;
+    });
+  }
 }

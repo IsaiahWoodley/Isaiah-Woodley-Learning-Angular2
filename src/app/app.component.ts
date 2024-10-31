@@ -3,6 +3,7 @@ import { RouterOutlet } from '@angular/router';
 import { User } from './model/user';
 import {CommonModule, NgForOf, NgIf} from '@angular/common';
 import {RavensListComponent} from './ravens-list/ravens-list.component';
+import {Team} from './model/data/mock-content';
 
 
 
