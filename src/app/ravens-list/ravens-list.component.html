@@ -1,8 +1,15 @@
 <div *ngIf="DivisionTeams && DivisionTeams.length > 0">
-  <h1>AFC North Teams</h1>
-  <ng-container *ngFor="let team of DivisionTeams">
-    <app-ravens-list-item [item]="team"></app-ravens-list-item>
-  </ng-container>
+  <h1>Team List</h1>
+
+  <ul>
+    <li *ngFor="let team of DivisionTeams">
+      <span>{{ team.City }} - {{ team.Team }} (Head Coach: {{ team.HeadCoach }})</span>
+      <button (click)="deleteTeam(team.Id)">Delete</button>
+    </li>
+  </ul>
+
+  <button (click)="addTeam()">Add New Team</button>
+
 </div>
 
 
