@@ -1,34 +1,37 @@
 import { Injectable } from '@angular/core';
 import {Team, TEAMS} from '../model/data/mock-content';
-import {Observable, of} from 'rxjs';
+import {catchError, Observable, of, throwError} from 'rxjs';
+import {HttpClient, HttpErrorResponse} from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PlayersService {
+  private apiUrl = 'api/TEAMS';
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
   getTeams(): Observable<Team[]> {
-    return of(TEAMS); // Use 'of' to return an Observable
+    return this.http.get<Team[]>(this.apiUrl).pipe(catchError(this.handleError));
   }
   getTeamById(id: number): Observable<Team | undefined> {
-    const team = TEAMS.find(item => item.Id === id); // Find the team by ID
-    return of(team); // Return the found team as an Observable
+    const url = `${this.apiUrl}/${id}`;
+    return this.http.get<Team>(url).pipe(catchError(this.handleError));
   }
-  addTeam(newTeam: Team):Observable<Team[]> {
-    TEAMS.push(newTeam);
-    return of(TEAMS);
+  addTeam(newTeam: Team):Observable<Team> {
+    return this.http.post<Team>(this.apiUrl, newTeam).pipe(catchError(this.handleError));
   }
-  updateTeam(updatedTeam: Team): Observable<Team[]> {
-    const index = TEAMS.findIndex(item => item.Id === updatedTeam.Id);
-    if (index !== -1) {
-      TEAMS[index] = updatedTeam;
-    }// Update the existing team
-      return of(TEAMS);
+  updateTeam(updatedTeam: Team): Observable<Team> {
+    const url = `${this.apiUrl}/${updatedTeam.Id}`;
+    return this.http.put<Team>(url, updatedTeam).pipe(catchError(this.handleError));
     }
 
-  deleteTeam(id: number): Observable<Team[]> {
-    const updateTeam = TEAMS.filter(item => item.Id !== id);
-    return of(updateTeam);
+  deleteTeam(id: number): Observable<Team> {
+    const url = `${this.apiUrl}/${id}`;
+    return this.http.delete<Team>(url).pipe(catchError(this.handleError));
+  }
+  private handleError(error: HttpErrorResponse) {
+    console.error('API error:', error);
+    return throwError(() => new Error('Server error, please try again.'));
   }
 }
+
