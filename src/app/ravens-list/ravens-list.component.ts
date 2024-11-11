@@ -32,6 +32,9 @@ export class RavensListComponent {
   fetchTeamById(id: number): void {
     this.playersService.getTeamById(id).subscribe((team: Team | undefined) => {
 
+    },
+    (error) => {
+      console.error('Error fetching teams by ID:', error);
     });
   }
 
@@ -42,12 +45,15 @@ export class RavensListComponent {
       Team: 'Dolphins',
       HeadCoach: 'Mike McDaniel'
     };
-    this.playersService.addTeam(newTeam).subscribe((updatedTeams: Team[]) => {
-      this.DivisionTeams = updatedTeams;
-    });
+    this.playersService.addTeam(newTeam).subscribe((updatedTeam: Team[]) => {
+      this.DivisionTeams = updatedTeam;
+    },
+      (error) => {
+        console.error('Error adding team:', error);
+      });
   }
-
-  updateTeam(): void {
+//t
+  UpdateTeam(): void {
     const updatedTeam: Team = {
       Id: 1, // ID of the team to update
       City: 'Updated City',
@@ -60,13 +66,19 @@ export class RavensListComponent {
         console.log('Team updated:', result);
         this.team();
       }
-    });
+    },
+      (error) => {
+        console.error('Error updating team:', error);
+      });
   }
 
   deleteTeam(id: number): void {
     this.playersService.deleteTeam(id).subscribe(updatedTeams => {
       this.DivisionTeams = updatedTeams;
       console.log(`Team with ID ${id} deleted`);
-    });
+    },
+      (error) => {
+        console.error('Error deleting team:', error);
+      });
   }
 }
