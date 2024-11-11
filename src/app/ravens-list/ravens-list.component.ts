@@ -1,5 +1,5 @@
 import {Component, Input} from '@angular/core';
-import {NgForOf, NgIf} from '@angular/common';
+import {DatePipe, NgForOf, NgIf, PercentPipe, UpperCasePipe} from '@angular/common';
 import {RavensListItemComponent} from '../ravens-list-item/ravens-list-item.component';
 import {Team, TEAMS} from '../model/data/mock-content';
 import {PlayersService} from '../services/players.service';
@@ -10,7 +10,10 @@ import {PlayersService} from '../services/players.service';
   imports: [
     NgForOf,
     NgIf,
-    RavensListItemComponent
+    RavensListItemComponent,
+    UpperCasePipe,
+    DatePipe,
+    PercentPipe
   ],
   templateUrl: './ravens-list.component.html',
   styleUrl: './ravens-list.component.css'
@@ -43,7 +46,9 @@ export class RavensListComponent {
       Id: 5,
       City: 'Miami',
       Team: 'Dolphins',
-      HeadCoach: 'Mike McDaniel'
+      HeadCoach: 'Mike McDaniel',
+      firstWin: 'Oct. 16, 1966',
+      winPercent: '0.25'
     };
     this.playersService.addTeam(newTeam).subscribe((updatedTeam: Team[]) => {
       this.DivisionTeams = updatedTeam;
@@ -58,7 +63,10 @@ export class RavensListComponent {
       Id: 1, // ID of the team to update
       City: 'Updated City',
       Team: 'Updated Team',
-      HeadCoach: 'Updated Coach'
+      HeadCoach: 'Updated Coach',
+      firstWin: '',
+      winPercent: ''
+
     };
 
     this.playersService.updateTeam(updatedTeam).subscribe(result => {
