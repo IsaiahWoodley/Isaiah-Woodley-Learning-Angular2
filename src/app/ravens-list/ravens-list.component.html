@@ -3,7 +3,7 @@
 
   <ul>
     <li *ngFor="let team of DivisionTeams">
-      <span>{{ team.City | uppercase }} - {{ team.Team | uppercase }} <strong> Head Coach: </strong>{{ team.HeadCoach }}
+      <span>{{ team | TeamName | uppercase }} <strong> Head Coach: </strong>{{ team.HeadCoach }}
      <strong> First Win: </strong>{{ team.firstWin | date: 'fullDate'}} <strong>Win Percentage:</strong> {{ team.winPercent | percent }}</span>
       <button (click)="deleteTeam(team.Id)">Delete</button>
     </li>

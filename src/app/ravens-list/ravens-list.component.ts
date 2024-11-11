@@ -3,6 +3,7 @@ import {DatePipe, NgForOf, NgIf, PercentPipe, UpperCasePipe} from '@angular/comm
 import {RavensListItemComponent} from '../ravens-list-item/ravens-list-item.component';
 import {Team, TEAMS} from '../model/data/mock-content';
 import {PlayersService} from '../services/players.service';
+import {FullTeamName} from '../pipes/full-TeamName';
 
 @Component({
   selector: 'app-ravens-list',
@@ -13,7 +14,8 @@ import {PlayersService} from '../services/players.service';
     RavensListItemComponent,
     UpperCasePipe,
     DatePipe,
-    PercentPipe
+    PercentPipe,
+    FullTeamName
   ],
   templateUrl: './ravens-list.component.html',
   styleUrl: './ravens-list.component.css'
