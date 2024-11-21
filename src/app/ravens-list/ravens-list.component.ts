@@ -6,6 +6,10 @@ import {PlayersService} from '../services/players.service';
 import {FullTeamName} from '../pipes/full-TeamName';
 import {HoverHighlightDirective} from '../directives/hover-highlight.directive';
 
+import {FormsModule} from '@angular/forms';
+import {AppHighlightOnFocusDirective} from '../directives/app-highlight-on-focus.directive';
+
+
 @Component({
   selector: 'app-ravens-list',
   standalone: true,
@@ -17,7 +21,9 @@ import {HoverHighlightDirective} from '../directives/hover-highlight.directive';
     DatePipe,
     PercentPipe,
     FullTeamName,
-    HoverHighlightDirective
+    HoverHighlightDirective,
+    FormsModule,
+    AppHighlightOnFocusDirective
   ],
   templateUrl: './ravens-list.component.html',
   styleUrl: './ravens-list.component.css'
@@ -31,18 +37,20 @@ export class RavensListComponent {
   ngOnInit(): void {
     this.team();
   }
+
   team(): void {
     this.playersService.getTeams().subscribe((teams: Team[]) => {
       this.DivisionTeams = teams;
     });
   }
+
   fetchTeamById(id: number): void {
     this.playersService.getTeamById(id).subscribe((team: Team | undefined) => {
 
-    },
-    (error) => {
-      console.error('Error fetching teams by ID:', error);
-    });
+      },
+      (error) => {
+        console.error('Error fetching teams by ID:', error);
+      });
   }
 
   addTeam(): void {
@@ -55,12 +63,13 @@ export class RavensListComponent {
       winPercent: '0.25'
     };
     this.playersService.addTeam(newTeam).subscribe((updatedTeam: Team[]) => {
-      this.DivisionTeams = updatedTeam;
-    },
+        this.DivisionTeams = updatedTeam;
+      },
       (error) => {
         console.error('Error adding team:', error);
       });
   }
+
 //t
   UpdateTeam(): void {
     const updatedTeam: Team = {
@@ -74,11 +83,11 @@ export class RavensListComponent {
     };
 
     this.playersService.updateTeam(updatedTeam).subscribe(result => {
-      if (result) {
-        console.log('Team updated:', result);
-        this.team();
-      }
-    },
+        if (result) {
+          console.log('Team updated:', result);
+          this.team();
+        }
+      },
       (error) => {
         console.error('Error updating team:', error);
       });
@@ -86,11 +95,21 @@ export class RavensListComponent {
 
   deleteTeam(id: number): void {
     this.playersService.deleteTeam(id).subscribe(updatedTeams => {
-      this.DivisionTeams = updatedTeams;
-      console.log(`Team with ID ${id} deleted`);
-    },
+        this.DivisionTeams = updatedTeams;
+        console.log(`Team with ID ${id} deleted`);
+      },
       (error) => {
         console.error('Error deleting team:', error);
       });
+  }
+
+  onSubmit() {
+    const newTeam = {
+      Id: this.DivisionTeams.length + 1, // Generate a new ID
+      TeamName: 'New Team', // Replace with form value
+      HeadCoach: 'New Coach', // Replace with form value
+      firstWin: new Date(), // Replace with form value
+      winPercent: 0.5, // Replace with form value
+    };
   }
 }

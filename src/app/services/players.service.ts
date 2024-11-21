@@ -31,4 +31,7 @@ export class PlayersService {
     const updateTeam = TEAMS.filter(item => item.Id !== id);
     return of(updateTeam);
   }
+  generateNewId(): number {
+    return TEAMS.length > 0 ? Math.max(...TEAMS.map(item => item.Id)) + 1 : 1;
+  }
 }

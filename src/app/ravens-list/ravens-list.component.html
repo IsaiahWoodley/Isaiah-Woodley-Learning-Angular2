@@ -1,13 +1,19 @@
 <div *ngIf="DivisionTeams && DivisionTeams.length > 0" xmlns="http://www.w3.org/1999/html">
-  <h1>Team List</h1>
+  <h1 >Team List </h1>
 
   <ul>
     <li *ngFor="let team of DivisionTeams" [appHoverHighlight]="'purple'">
       <span>{{ team | TeamName | uppercase }} <strong> Head Coach: </strong>{{ team.HeadCoach }}
      <strong> First Win: </strong>{{ team.firstWin | date: 'fullDate'}} <strong>Win Percentage:</strong> {{ team.winPercent | percent }}</span>
-      <button (click)="deleteTeam(team.Id)" [appHoverHighlight]="'red'">Delete</button>
+      <button (click)="deleteTeam(team.Id)" >Delete</button>
     </li>
   </ul>
+  <form>
+    <div>
+      <label for="teamName">Team Name</label>
+      <input type="text" id="teamName" name="teamName" ngModel [appAppHighlightOnFocus]="'blue'" required>
+    </div>
+  </form>
 
   <button (click)="addTeam()" [appHoverHighlight]="'green'" >Add New Team</button>
 
