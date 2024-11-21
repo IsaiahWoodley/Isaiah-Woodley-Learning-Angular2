@@ -2,14 +2,14 @@
   <h1>Team List</h1>
 
   <ul>
-    <li *ngFor="let team of DivisionTeams">
+    <li *ngFor="let team of DivisionTeams" [appHoverHighlight]="'purple'">
       <span>{{ team | TeamName | uppercase }} <strong> Head Coach: </strong>{{ team.HeadCoach }}
      <strong> First Win: </strong>{{ team.firstWin | date: 'fullDate'}} <strong>Win Percentage:</strong> {{ team.winPercent | percent }}</span>
-      <button (click)="deleteTeam(team.Id)">Delete</button>
+      <button (click)="deleteTeam(team.Id)" [appHoverHighlight]="'red'">Delete</button>
     </li>
   </ul>
 
-  <button (click)="addTeam()">Add New Team</button>
+  <button (click)="addTeam()" [appHoverHighlight]="'green'" >Add New Team</button>
 
 </div>
 

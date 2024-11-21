@@ -4,6 +4,7 @@ import {RavensListItemComponent} from '../ravens-list-item/ravens-list-item.comp
 import {Team, TEAMS} from '../model/data/mock-content';
 import {PlayersService} from '../services/players.service';
 import {FullTeamName} from '../pipes/full-TeamName';
+import {HoverHighlightDirective} from '../directives/hover-highlight.directive';
 
 @Component({
   selector: 'app-ravens-list',
@@ -15,7 +16,8 @@ import {FullTeamName} from '../pipes/full-TeamName';
     UpperCasePipe,
     DatePipe,
     PercentPipe,
-    FullTeamName
+    FullTeamName,
+    HoverHighlightDirective
   ],
   templateUrl: './ravens-list.component.html',
   styleUrl: './ravens-list.component.css'
