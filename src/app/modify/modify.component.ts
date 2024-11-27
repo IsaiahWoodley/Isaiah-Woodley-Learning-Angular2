@@ -3,6 +3,7 @@ import {FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators} fr
 import {NgIf} from '@angular/common';
 import {MatCardModule} from '@angular/material/card';
 import {MatInputModule} from '@angular/material/input';
+import {MatTooltipModule} from '@angular/material/tooltip';
 
 
 
@@ -15,7 +16,8 @@ import {MatInputModule} from '@angular/material/input';
     NgIf,
     ReactiveFormsModule,
     MatCardModule,
-    MatInputModule
+    MatInputModule,
+    MatTooltipModule
   ],
   templateUrl: './modify.component.html',
   styleUrl: './modify.component.css'
