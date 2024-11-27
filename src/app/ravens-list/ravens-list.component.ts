@@ -10,6 +10,7 @@ import {FormsModule} from '@angular/forms';
 import {AppHighlightOnFocusDirective} from '../directives/app-highlight-on-focus.directive';
 import {MatCardModule} from '@angular/material/card';
 import {MatButtonModule} from '@angular/material/button';
+import {MatToolbarModule} from '@angular/material/toolbar';
 
 
 @Component({
@@ -27,7 +28,8 @@ import {MatButtonModule} from '@angular/material/button';
     FormsModule,
     AppHighlightOnFocusDirective,
     MatCardModule,
-    MatButtonModule
+    MatButtonModule,
+    MatToolbarModule
   ],
   templateUrl: './ravens-list.component.html',
   styleUrl: './ravens-list.component.css'

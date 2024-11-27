@@ -1,6 +1,12 @@
 <div *ngIf="DivisionTeams && DivisionTeams.length > 0" xmlns="http://www.w3.org/1999/html">
   <mat-card class="team-card">
     <h1>Team List </h1>
+    <mat-toolbar color="primary">
+      <span class="spacer"></span>
+      <button mat-fab extended >Home</button>
+      <button mat-fab extended >Teams</button>
+      <button mat-fab extended >Ravens</button>
+    </mat-toolbar>
     <mat-card-header>
       <li *ngFor="let team of DivisionTeams" [appHoverHighlight]="'purple'">
         <strong>{{ team | TeamName | uppercase }}</strong> <mat-card-subtitle><strong> Head Coach: </strong>{{ team.HeadCoach }}</mat-card-subtitle>
