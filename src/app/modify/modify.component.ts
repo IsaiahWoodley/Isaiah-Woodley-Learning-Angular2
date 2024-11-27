@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
 import {NgIf} from '@angular/common';
+import {MatCardModule} from '@angular/material/card';
+import {MatInputModule} from '@angular/material/input';
 
 
 
@@ -11,7 +13,9 @@ import {NgIf} from '@angular/common';
   imports: [
     FormsModule,
     NgIf,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatCardModule,
+    MatInputModule
   ],
   templateUrl: './modify.component.html',
   styleUrl: './modify.component.css'

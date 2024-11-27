@@ -8,6 +8,8 @@ import {HoverHighlightDirective} from '../directives/hover-highlight.directive';
 
 import {FormsModule} from '@angular/forms';
 import {AppHighlightOnFocusDirective} from '../directives/app-highlight-on-focus.directive';
+import {MatCardModule} from '@angular/material/card';
+import {MatButtonModule} from '@angular/material/button';
 
 
 @Component({
@@ -23,7 +25,9 @@ import {AppHighlightOnFocusDirective} from '../directives/app-highlight-on-focus
     FullTeamName,
     HoverHighlightDirective,
     FormsModule,
-    AppHighlightOnFocusDirective
+    AppHighlightOnFocusDirective,
+    MatCardModule,
+    MatButtonModule
   ],
   templateUrl: './ravens-list.component.html',
   styleUrl: './ravens-list.component.css'

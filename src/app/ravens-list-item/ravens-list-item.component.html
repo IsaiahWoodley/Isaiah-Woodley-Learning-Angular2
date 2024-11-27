@@ -1,4 +1,14 @@
 <div class="team-card" style="border: 2px solid black; padding: 5px; margin: 10px;">
-  <h2>{{ item.Team }} ({{ item.City }})</h2>
-  <p>Head Coach: {{ item.HeadCoach }}</p>
+  <mat-card class="team-card">
+    <mat-card-header>
+      <mat-card-title>{{ item.Team }} ({{ item.City }})</mat-card-title>
+      <mat-card-subtitle>Head Coach: {{ item.HeadCoach }}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <mat-list>
+        <mat-list-item>{{ item.firstWin }}</mat-list-item>
+        <mat-list-item>{{ item.winPercent }}</mat-list-item>
+      </mat-list>
+    </mat-card-content>
+  </mat-card>
 </div>

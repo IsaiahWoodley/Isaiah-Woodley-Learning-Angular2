@@ -1,13 +1,21 @@
 <div *ngIf="DivisionTeams && DivisionTeams.length > 0" xmlns="http://www.w3.org/1999/html">
-  <h1 >Team List </h1>
+  <mat-card class="team-card">
+    <h1>Team List </h1>
+    <mat-card-header>
+      <li *ngFor="let team of DivisionTeams" [appHoverHighlight]="'purple'">
+        <strong>{{ team | TeamName | uppercase }}</strong> <mat-card-subtitle><strong> Head Coach: </strong>{{ team.HeadCoach }}</mat-card-subtitle>
+      </li>
+    </mat-card-header>
 
-  <ul>
+    <mat-card-content>
     <li *ngFor="let team of DivisionTeams" [appHoverHighlight]="'purple'">
-      <span>{{ team | TeamName | uppercase }} <strong> Head Coach: </strong>{{ team.HeadCoach }}
-     <strong> First Win: </strong>{{ team.firstWin | date: 'fullDate'}} <strong>Win Percentage:</strong> {{ team.winPercent | percent }}</span>
-      <button (click)="deleteTeam(team.Id)" >Delete</button>
+     <strong> First Win: </strong>{{ team.firstWin | date: 'fullDate'}} <strong>Win Percentage:</strong> {{ team.winPercent | percent }}
+      <mat-card-actions>
+        <button mat-raised-button (click)="deleteTeam(team.Id)" >Delete</button>
+      </mat-card-actions>
     </li>
-  </ul>
+    </mat-card-content>
+
   <form>
     <div>
       <label for="teamName">Team Name</label>
@@ -15,8 +23,9 @@
     </div>
   </form>
 
-  <button (click)="addTeam()" [appHoverHighlight]="'green'" >Add New Team</button>
+  <button mat-fab extended (click)="addTeam()" [appHoverHighlight]="'green'" >Add New Team</button>
 
+  </mat-card>
 </div>
 
 
